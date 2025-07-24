@@ -56,7 +56,7 @@ A web application that fetches and displays news articles using the [NewsAPI.org
 
 Due to technical issues with the provided webservers, this project is deployed on [Vercel](https://vercel.com/):
 
-- **Live Demo:** [https://your-vercel-app-url.vercel.app](https://your-vercel-app-url.vercel.app)
+- **Live Demo:** [https://global-news-hub-eta.vercel.app/](https://global-news-hub-eta.vercel.app/)
 
 #### Steps to Deploy on Vercel
 

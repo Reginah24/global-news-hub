@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
     const NEWS_API_KEY = process.env.NEWS_API_KEY;
     const { q, category, country } = req.query;
     let url;
@@ -18,4 +18,4 @@ module.exports = async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: 'Server error', error: err.toString() });
     }
-};
+}

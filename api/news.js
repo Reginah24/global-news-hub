@@ -1,14 +1,7 @@
-const express = require('express');
 const fetch = require('node-fetch');
-const cors = require('cors');
 
-const app = express();
-const PORT = 5000;
-const NEWS_API_KEY = '40fca6d18ddd460ab49eb8f2e9c408e2'; 
-
-app.use(cors());
-
-app.get('/news', async (req, res) => {
+module.exports = async (req, res) => {
+    const NEWS_API_KEY = process.env.NEWS_API_KEY;
     const { q, category, country } = req.query;
     let url;
     if (q) {
@@ -21,10 +14,8 @@ app.get('/news', async (req, res) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        res.json(data);
+        res.status(200).json(data);
     } catch (err) {
         res.status(500).json({ message: 'Server error', error: err.toString() });
     }
-});
-
-app.listen(PORT, () => console.log(`Proxy server running on http://localhost:${PORT}`));
+};

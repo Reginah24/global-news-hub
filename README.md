@@ -1,109 +1,28 @@
-# Global News Hub
+# Global News Hub 🌍
 
-Your daily source for worldwide headlines.  
-A web application that fetches and displays news articles using the [NewsAPI.org](https://newsapi.org/) external API, with features for searching and filtering by category.
+A modern, responsive news application that displays trending news from around the world using the News API. Built with vanilla HTML, CSS, and JavaScript for maximum compatibility and performance.
 
----
+## 🚀 Features
 
-## Features
+- 📰 **Real-time News**: Fetch the latest trending news from multiple sources
+- 🔍 **Advanced Search**: Search for specific news topics with instant results
+- 🏷️ **Category Filtering**: Filter news by categories (Business, Technology, Sports, etc.)
+- 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- ⚡ **Fast Loading**: Optimized performance with smooth animations
+- 🛡️ **Robust Error Handling**: Graceful error handling with retry functionality
+- 🎨 **Clean UI**: Professional interface with light gray background and white cards
+- 🔄 **Auto-refresh**: Easy refresh and clear functionality
 
-- **Live news headlines** from the United States
-- **Search** by keyword
-- **Filter** by news category
-- Responsive, user-friendly interface
-- Robust error handling for API/network issues
+## 📋 Prerequisites
 
----
+- News API key (free from [newsapi.org](https://newsapi.org/register))
+- Docker (for containerization)
+- Access to web servers (Web01, Web02, Lb01) for deployment
 
-## Screenshot
+## 🏠 Local Development Setup
 
-![Screenshot](./screenshot.png)
+### 1. Clone the Repository
 
----
-
-## Getting Started (Local Development)
-
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/Reginah24/global-news-hub.git
-    cd global-news-hub
-    ```
-
-2. **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3. **Set up your API key:**
-    - Create a `.env` file in the root directory:
-        ```
-        NEWS_API_KEY=your_newsapi_key_here
-        ```
-    - (Or, you can edit `server.js` directly, but `.env` is recommended.)
-
-4. **Start the backend proxy server:**
-    ```bash
-    node server.js
-    ```
-
-5. **Open `index.html` in your browser** to use the app locally.
-
----
-
-## Deployment
-
-### Vercel
-
-Due to technical issues with the provided webservers, this project is deployed on [Vercel](https://vercel.com/):
-
-- **Live Demo:** [https://global-news-hub-eta.vercel.app/](https://global-news-hub-eta.vercel.app/)
-
-#### Steps to Deploy on Vercel
-
-1. Push your code to GitHub.
-2. Go to [Vercel](https://vercel.com/) and import your GitHub repository.
-3. In Vercel dashboard, add your NewsAPI key as an environment variable (`NEWS_API_KEY`).
-4. Deploy! Vercel will handle both the backend and frontend.
-
----
-
-## API Attribution
-
-- Powered by [NewsAPI.org](https://newsapi.org/)
-- Please review their [terms of use](https://newsapi.org/terms).
-
----
-
-## Security
-
-- **API keys** are never exposed in the frontend. All requests go through a secure backend proxy.
-- `.env` and sensitive files are excluded from version control via `.gitignore`.
-
----
-
-## Challenges & Notes
-
-- The original assignment required deployment on university webservers, but due to access issues, Vercel was used as a reliable alternative.
-- NewsAPI free tier only allows requests from localhost or via a backend proxy.
-- [Add any other challenges you faced and how you solved them.]
-
----
-
-## Credits
-
-- [NewsAPI.org](https://newsapi.org/)
-- [Express](https://expressjs.com/)
-- [Node.js](https://nodejs.org/)
-- [Tailwind CSS](https://tailwindcss.com/) <!-- Remove if not used -->
-
----
-
-## Author
-
-- GitHub: [Reginah24](https://github.com/Reginah24)
-
----
-
-## License
-
-This project is for educational purposes.
+```bash
+git clone https://github.com/Reginah24/global-news-hub.git
+cd global-news-hub

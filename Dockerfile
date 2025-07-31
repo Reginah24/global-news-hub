@@ -1,8 +1,20 @@
 # Use Nginx to serve static HTML files
 FROM nginx:alpine
 
+# Install curl for health checks
+RUN apk add --no-cache curl
+
 # Copy the HTML file to Nginx's default directory
 COPY index.html /usr/share/nginx/html/
+COPY health.html /usr/share/nginx/html/
+COPY js/ /usr/share/nginx/html/js/
+
+# Create startup script to inject environment variables
+RUN echo '#!/bin/sh' > /docker-entrypoint.d/30-inject-env.sh && \
+    echo 'if [ -n "$NEWS_API_KEY" ]; then' >> /docker-entrypoint.d/30-inject-env.sh && \
+    echo '  sed -i "s/YOUR_API_KEY_HERE/$NEWS_API_KEY/g" /usr/share/nginx/html/index.html' >> /docker-entrypoint.d/30-inject-env.sh && \
+    echo 'fi' >> /docker-entrypoint.d/30-inject-env.sh && \
+    chmod +x /docker-entrypoint.d/30-inject-env.sh
 
 # Create a custom Nginx configuration that listens on port 8080
 RUN echo 'server { \

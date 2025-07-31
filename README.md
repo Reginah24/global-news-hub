@@ -86,7 +86,31 @@ global-news-hub/
 
 The application fetches news data from the News API and displays it in a clean, responsive interface. Users can search for specific topics or filter by categories. I implemented error handling to deal with API rate limits and network issues.
 
-For deployment, I containerized the app with Docker and set up HAProxy for load balancing across multiple instances. This ensures the app can handle more traffic and provides redundancy.
+For deployment, I used Vercel for the live production environment, which provides excellent performance and global CDN distribution. I also prepared Docker configurations and HAProxy setup for containerized deployment scenarios.
+
+## Live Demo
+
+🌐 **Live Application**: [https://your-app-name.vercel.app](https://your-vercel-url.vercel.app)
+
+## Deployment Options
+
+### Option 1: Vercel (Production)
+```bash
+# Connect GitHub repo to Vercel
+# Add NEWS_API_KEY environment variable in Vercel dashboard
+# Automatic deployment on git push
+```
+
+### Option 2: Docker (Local/Server)
+```bash
+docker build -t global-news-hub .
+docker run -p 8080:8080 --env-file .env global-news-hub
+```
+
+### Option 3: Multi-container with Load Balancer
+```bash
+docker-compose up -d
+```
 
 ## Testing
 

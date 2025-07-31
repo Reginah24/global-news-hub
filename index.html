@@ -122,12 +122,10 @@
     </div>
 
     <script>
-        // Configuration
-        const NEWS_API_KEY = document.querySelector('meta[name="news-api-key"]')?.content || 
-                             window.NEWS_API_KEY || 
-                             '6e7e3e191a044942bdfe97a0b382cf4d';
+        // --- CONFIGURATION ---
+        const NEWS_API_KEY = '6e7e3e191a044942bdfe97a0b382cf4d'; // Your API key
         
-        // Get DOM elements
+        // --- DOM ELEMENT REFERENCES ---
         const searchInput = document.getElementById('search-input');
         const categorySelect = document.getElementById('category-select');
         const newsContainer = document.getElementById('news-container');
@@ -139,7 +137,7 @@
         const retryBtn = document.getElementById('retry-btn');
         const showAllBtn = document.getElementById('show-all-btn');
 
-        // Utility functions
+        // --- UTILITY FUNCTIONS ---
         function hideAllMessages() {
             loader.classList.add('hidden');
             errorMessage.classList.add('hidden');
@@ -163,22 +161,16 @@
             noResultsText.textContent = message;
             noResults.classList.remove('hidden');
         }
-        
-        // Check if API key is set (after functions are defined)
-        if (NEWS_API_KEY === 'YOUR_API_KEY_HERE' || !NEWS_API_KEY) {
-            console.error('NEWS_API_KEY not configured.');
-            showError('API key not configured. Please contact the administrator.');
-        }
 
-        // Main news fetching function
+        // --- CORE FUNCTIONS ---
         async function fetchNews() {
             showLoader();
             
             const query = searchInput.value.trim();
             const category = categorySelect.value;
-            const country = 'us';
+            const country = 'us'; // Fixed to US since country selection removed
 
-            // Build News API URL
+            // Build URL for News API
             let newsApiUrl;
             if (query) {
                 newsApiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&apiKey=${NEWS_API_KEY}&language=en&sortBy=publishedAt&pageSize=20`;
@@ -189,7 +181,7 @@
                 }
             }
 
-            // Use CORS proxy for API access
+            // Use CORS proxy to access News API directly
             const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(newsApiUrl);
 
             try {
@@ -258,9 +250,12 @@
             });
         }
 
-        // Event listeners
+        // --- EVENT LISTENERS ---
+        
+        // Fetch news when category changes
         categorySelect.addEventListener('change', fetchNews);
 
+        // Fetch news when user presses Enter in the search box
         searchInput.addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
@@ -268,15 +263,18 @@
             }
         });
 
+        // Retry button
         retryBtn.addEventListener('click', fetchNews);
 
+        // Show all button
         showAllBtn.addEventListener('click', () => {
             searchInput.value = '';
             categorySelect.value = 'general';
             fetchNews();
         });
 
-        // Load news when page loads
+        // --- INITIALIZATION ---
+        // Fetch news on initial page load with default settings
         window.addEventListener('load', fetchNews);
     </script>
 </body>

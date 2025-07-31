@@ -127,13 +127,6 @@
                              window.NEWS_API_KEY || 
                              '6e7e3e191a044942bdfe97a0b382cf4d';
         
-        // Check if API key is set
-        if (NEWS_API_KEY === 'YOUR_API_KEY_HERE' || !NEWS_API_KEY) {
-            console.error('NEWS_API_KEY not configured.');
-            showError('API key not configured. Please contact the administrator.');
-            return;
-        }
-        
         // Get DOM elements
         const searchInput = document.getElementById('search-input');
         const categorySelect = document.getElementById('category-select');
@@ -169,6 +162,12 @@
             hideAllMessages();
             noResultsText.textContent = message;
             noResults.classList.remove('hidden');
+        }
+        
+        // Check if API key is set (after functions are defined)
+        if (NEWS_API_KEY === 'YOUR_API_KEY_HERE' || !NEWS_API_KEY) {
+            console.error('NEWS_API_KEY not configured.');
+            showError('API key not configured. Please contact the administrator.');
         }
 
         // Main news fetching function
